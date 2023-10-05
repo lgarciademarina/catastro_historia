@@ -126,7 +126,7 @@ class CatastroHistoria:
         # Only create GUI ONCE in callback, so that it will only load when the plugin is started
         if self.first_start == True:
             self.first_start = False
-            self.ui = CatastroHistoriaDock()
+            self.ui = CatastroHistoriaDock(self.iface)
             self.ui.carga_btn.clicked.connect(self.split_screen)
 
 
@@ -236,3 +236,5 @@ class CatastroHistoria:
             canvas.setExtent(extent)
             #canvas.zoomScale(scale)
             canvas.refresh()
+        else:
+            self.iface.mapCanvas().extentsChanged.disconnect(lambda: self.syncExtent(self.iface.mapCanvas().objectName(), canvas))

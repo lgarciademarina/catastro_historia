@@ -26,17 +26,20 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import os
 
 class CatastroHistoriaDock(QtWidgets.QDockWidget):
-    def __init__(self, parent=None):
+    def __init__(self, iface, parent=None):
         """Constructor."""
         super(CatastroHistoriaDock, self).__init__(parent)
-        self.setupUi(self)
+        self.iface = iface
+        self.setupUi()
 
-    def setupUi(self, Split_Dock):
+    def setupUi(self):
+        self.setFeatures(QtWidgets.QDockWidget.DockWidgetClosable | QtWidgets.QDockWidget.DockWidgetMovable)
+        self.iface.addDockWidget(QtCore.Qt.LeftDockWidgetArea, self)
         font = QtGui.QFont()
         font.setFamily("Arial")
         font.setPointSize(10)
         self.setFont(font)
-        self.setWindowTitle("Catastro Historia")
+        self.setWindowTitle("Catastro con Historia")
         #En el dock necesitamos añadir un widget que sirva de contenedor para nuestro layout
         self.container = QtWidgets.QWidget()
         self.setWidget(self.container)
