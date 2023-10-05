@@ -195,7 +195,7 @@ class CatastroHistoria:
             self.iface.mapCanvas().setLayers([rlayer])
             self.iface.mapCanvas().zoomToFullExtent()
         else:
-            QWidget.QMessageBox('La capa WMS {} no es válida'.format(rlayer.name()))
+            print('La capa WMS {} no es válida'.format(rlayer.name()))
             print(rlayer.error().message())
 
 
