@@ -236,5 +236,3 @@ class CatastroHistoria:
             canvas.setExtent(extent)
             #canvas.zoomScale(scale)
             canvas.refresh()
-        else:
-            self.iface.mapCanvas().extentsChanged.disconnect(lambda: self.syncExtent(self.iface.mapCanvas().objectName(), canvas))
